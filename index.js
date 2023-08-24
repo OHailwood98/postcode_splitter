@@ -1,6 +1,6 @@
-var data = require("./OL.json"); // change this require and the value of folder for each postcode also GeoJSON files need to be renamed to just JSON files
+var data = require("./geojson/ZE.json"); // change this require for each postcode also GeoJSON files need to be renamed to just JSON files
 var fs = require("fs");
-var folder = "./OL";
+var folder = "./postcodes";
 
 var districts = data.features;
 
@@ -16,7 +16,7 @@ for (var i = 0; i < districts.length; i++) {
   var name = districts[i].properties.name;
   newDistrict.features[0] = districts[i];
   fs.writeFile(
-    `${folder}/${name}.geojson`,
+    `${folder}/${name}.json`,
     JSON.stringify(newDistrict),
     "utf8",
     function (err) {
